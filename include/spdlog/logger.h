@@ -76,7 +76,7 @@ public:
     void swap(spdlog::logger &other) SPDLOG_NOEXCEPT;
 
     // FormatString is a type derived from fmt::compile_string
-    template<typename FormatString, typename std::enable_if<fmt::is_compile_string<FormatString>::value, int>::type = 0, typename... Args>
+    template<typename FormatString, typename... Args>
     void log(source_loc loc, level::level_enum lvl, const FormatString &fmt, Args &&...args)
     {
         log_(loc, lvl, fmt, std::forward<Args>(args)...);
