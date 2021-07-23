@@ -136,11 +136,6 @@ struct is_convertible_to_wformat_string : std::false_type
 {};
 #endif // SPDLOG_WCHAR_TO_UTF8_SUPPORT
 
-template<class T>
-struct is_convertible_to_basic_format_string
-    : std::integral_constant<bool, std::is_convertible<const T &, fmt::format_string<>>::value || is_convertible_to_wformat_string<T>::value>
-{};
-
 #if defined(SPDLOG_NO_ATOMIC_LEVELS)
 using level_t = details::null_atomic_int;
 #else
